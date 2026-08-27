@@ -11,16 +11,39 @@
 - [x] Squelette documentaire : `CLAUDE.md` racine et par répertoire, gabarit d'ADR,
       `.gitignore` (pas de secrets, pas de données métier dans le dépôt).
 - [x] **État de l'art complet, 8 axes + synthèse** (`docs/etat-de-l-art/`, ~2 100 lignes).
+- [x] **Rédaction des 8 ADR indépendants du SI** (0001 à 0008, `docs/adr/`). Tous en
+      statut `Proposé`.
 
-## L'étape en cours : convertir l'état de l'art en décisions
+## ⚠️ Étape bloquante : validation par le porteur du projet
 
-L'état de l'art décrit le paysage ; il ne décide de rien. L'étape présente consiste à
-écrire les ADR qui engagent le projet. Ils sont ordonnés par dépendance : le premier
-commande tous les autres.
+Les 8 ADR indépendants du SI (0001 à 0008) sont **rédigés mais non actés** : ils portent le
+statut `Proposé`, c'est-à-dire « en attente d'arbitrage ». Conformément au `CLAUDE.md` du
+dépôt et à `docs/adr/CLAUDE.md`, un ADR n'engage le projet que passé en `Accepté`, et cette
+validation revient au **porteur du projet** — un agent ne peut pas s'auto-arbitrer.
+
+**Rien de structurant ne doit démarrer avant cette validation** (l'ADR 0001 commande tous
+les autres). Actions à mener avec le porteur :
+
+- [ ] **Faire relire et arbitrer les ADR 0001 à 0008.** Pour chacun : `Proposé` → `Accepté`
+      (ou `Rejeté`, avec la raison conservée). Renseigner le champ « Décideurs » avec son nom.
+- [ ] **Points nécessitant explicitement son arbitrage**, signalés dans les ADR :
+      - ADR 0001 : la tension code généré autorisé / bac à sable non instruit / revue humaine
+        différée (cf. « Conséquences » de l'ADR).
+      - ADR 0004 : le seuil de mise en quarantaine (arbitrage métier, par contrat).
+      - ADR 0007 : GitLab ou GitHub ; dépôts d'instance chez nous ou chez le client ; niveau
+        SLSA visé ; budget d'évaluation LLM ; registre de prompts en miroir.
+      - ADR 0008 : finalité de distribution (interne / revente / opération pour des tiers).
+- [ ] **Mettre à jour ce TODO et cocher les ADR ci-dessous** une fois passés en `Accepté`.
+
+## Une fois les ADR 0001–0008 validés : convertir l'état de l'art en décisions
+
+L'état de l'art décrit le paysage ; il ne décide de rien. Les ADR ci-dessous engagent le
+projet. Ils sont ordonnés par dépendance : le premier commande tous les autres. Ils sont
+**rédigés** ; la case reste décochée tant que le porteur ne les a pas actés (`Accepté`).
 
 ### Décisions qui ne dépendent d'aucun SI cible
 
-Elles peuvent être prises tout de suite.
+Rédigées (statut `Proposé`), en attente de validation.
 
 - [ ] **ADR 0001 — Frontière entre ce qui est décidé par LLM et ce qui est figé en code.**
       C'est la décision structurante du projet. L'état de l'art converge vers « décider
@@ -58,7 +81,9 @@ Elles peuvent être prises tout de suite.
 
 ### Décisions qui dépendent du SI cible
 
-À instruire maintenant, à trancher par déploiement. Elles ne bloquent pas la V1 du noyau.
+**Non encore rédigées.** À instruire maintenant, à trancher par déploiement. Elles ne
+bloquent pas la V1 du noyau. À écrire dès qu'un SI cible est connu, ou plus tôt à titre de
+cadrage.
 
 - [ ] **ADR 0009 — Moteur d'exécution durable.** DBOS si un Postgres existe déjà (zéro
       composant nouveau, MIT), Temporal à grande échelle, Restate si la licence BSL 1.1
