@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+dist/
+build/
+
+# Secrets et configuration locale — ne jamais versionner
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.yaml
+!secrets.enc.yaml
+
+# Données : aucune donnée métier ne doit entrer dans le dépôt
+data/
+*.csv
+*.parquet
+*.xlsx
+!docs/**/*.csv
+
+# Traces et sorties d'exécution
+logs/
+*.log
+.cache/
+outputs/
+
+# Outils et environnements de développement
+.idea/
+.vscode/
+.DS_Store
